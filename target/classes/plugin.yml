@@ -1,0 +1,10 @@
+name: G-IF
+version: '1.0'
+main: me.filipe.gitemframe.GItemFrame
+api-version: 1.19
+authors: [ GamerExxtreme ]
+description: Simple Item Frame plugin.
+
+commands:
+  toggleif:
+    usage: /<command>

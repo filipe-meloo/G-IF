@@ -1,0 +1,8 @@
+me\filipe\gitemframe\events\InvClick.class
+me\filipe\gitemframe\commands\ToggleIF.class
+me\filipe\gitemframe\data\Dados.class
+me\filipe\gitemframe\utils\Utils.class
+me\filipe\gitemframe\data\SettingsData.class
+me\filipe\gitemframe\events\PlayerJoin.class
+me\filipe\gitemframe\menus\IFMenu.class
+me\filipe\gitemframe\GItemFrame.class
