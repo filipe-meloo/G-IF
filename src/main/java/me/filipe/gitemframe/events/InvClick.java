@@ -8,11 +8,15 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.ItemFrame;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.hanging.HangingBreakByEntityEvent;
 import org.bukkit.event.hanging.HangingBreakEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -65,6 +69,7 @@ public class InvClick implements Listener {
 
         if (e.getCurrentItem() == null) return;
         if (e.getCurrentItem().getType().equals(Material.BLACK_STAINED_GLASS_PANE) && e.getSlot() != 13) return;
+        if (e.getClickedInventory() != e.getView().getTopInventory()) return;
 
         if (e.getSlot() == (e.getView().getTopInventory().getSize() - 1)) {
             SettingsData.toggleEnabled((Player) e.getWhoClicked());
@@ -73,6 +78,7 @@ public class InvClick implements Listener {
         }
 
         Player p = (Player) e.getWhoClicked();
+
 
         if (e.getSlot() == 13) {
 
@@ -110,6 +116,16 @@ public class InvClick implements Listener {
     public void onItemFBreak(HangingBreakEvent e) {
         if (e.getEntity() instanceof ItemFrame) {
             ItemFrame i = (ItemFrame) e.getEntity();
+            if (l.contains(i.getLocation())) {
+                e.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onItemOut(ProjectileHitEvent e) {
+        if (e.getHitEntity() instanceof ItemFrame) {
+            ItemFrame i = (ItemFrame) e.getHitEntity();
             if (l.contains(i.getLocation())) {
                 e.setCancelled(true);
             }
