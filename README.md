@@ -10,3 +10,4 @@
 ### Future Additions
 
 - Only the player that placed the Item Frame can remove the item inside.
+- Custom Language File (Current is Portuguese).
